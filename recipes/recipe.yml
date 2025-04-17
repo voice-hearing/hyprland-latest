@@ -1,5 +1,8 @@
-name: hyprland
+# yaml-language-server: $schema=https://schema.innerknowing.xyz/recipe-v1.json
+# image will be published to ghcr.io/<user>/<name>
+name: hyprland-latest
 
+# description will be included in the image's metadata
 description: ublue images for wayland compositors
 
 base-image: quay.io/fedora-ostree-desktops/base-atomic
