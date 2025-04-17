@@ -8,7 +8,15 @@ modules:
     - type: script
       scripts:
         - installsignedkernel.sh
-
+        - chezmoi.sh
+        - distrobox.sh
+        - docker.sh
+        - fonts.sh
+        - kopia.sh
+        - nordvpn.sh
+        - tailscale.sh
+        - vscode.sh
+        
     - type: containerfile
       snippets:
         - RUN rpm-ostree install just powerstat
