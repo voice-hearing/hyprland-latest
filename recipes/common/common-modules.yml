@@ -10,7 +10,6 @@ modules:
         - installsignedkernel.sh
         - chezmoi.sh
         - kopia.sh
-        - vscode.sh
         
     - type: containerfile
       snippets:
@@ -173,6 +172,7 @@ modules:
       scripts:
         - installrpmfusion.sh
         - removeunusedrepos.sh
+    #- nordvpn.sh
 
     - type: files
       files:
@@ -187,7 +187,6 @@ modules:
 
     - type: script
       scripts:
-        - nordvpn.sh
         - settheming.sh
         - addbrewjustimport.sh
 
