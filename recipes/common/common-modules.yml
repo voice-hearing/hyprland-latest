@@ -9,7 +9,6 @@ modules:
       scripts:
         - installsignedkernel.sh
         - chezmoi.sh
-        - distrobox.sh
         - docker.sh
         - fonts.sh
         - kopia.sh
