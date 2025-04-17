@@ -1,0 +1,82 @@
+modules:
+  - type: systemd
+
+    system:
+      enabled:
+        - flatpak-system-update.timer
+
+    user:
+      enabled:
+        - flatpak-user-update.timer
+
+  - type: default-flatpaks
+    notify: true # Send notification after install/uninstall is finished (true/false)
+    system:
+      repo-url: https://dl.flathub.org/repo/flathub.flatpakrepo
+      repo-name: flathub
+      repo-title: "Flathub (system-wide)"
+      install:    
+        - com.github.tchx84.Flatseal
+        - it.mijorus.gearlever
+        - io.github.flattool.Ignition
+        - org.gnome.Logs
+        - io.missioncenter.MissionCenter
+        - org.mozilla.Thunderbird
+        - io.github.dvlv.boxbuddyrs
+        - io.neovim.nvim
+        - com.github.ahrm.sioyek
+        - com.inform7.IDE
+        - io.github.flattool.Warehouse
+        - org.fedoraproject.MediaWriter
+        - com.calibre_ebook.calibre
+        - com.vscodium.codium
+        - org.garudalinux.firedragon
+        - io.github.mhogomchungu.sirikali
+        - io.github.picocrypt.Picocrypt
+        - io.github.cmus.cmus
+        - org.kde.dolphin
+        - io.gitlab.adhami3310.Converter
+        - com.github.Murmele.Gittyup
+        - io.github.shiftey.Desktop
+        - com.neatdecisions.Detwinner
+        - com.zettlr.Zettlr
+        - io.github.sxyazi.yazi
+        - eu.betterbird.Betterbird
+        - com.uploadedlobster.peek
+        - org.onlyoffice.desktopeditors
+        - com.opera.Opera
+        - info.smplayer.SMPlayer
+        - io.mpv.Mpv
+        - md.obsidian.Obsidian
+        - no.mifi.losslesscut
+        - org.freefilesync.FreeFileSync
+        - org.jdownloader.JDownloader
+        - cn.feishu.Feishu
+        - com.tonikelope.MegaBasterd
+        - com.github.KRTirtho.Spotube
+        - org.kde.kdenlive
+        - net.mullvad.MullvadBrowser
+        - org.videolan.VLC
+        - com.microsoft.Edge
+        - org.standardnotes.standardnotes
+        - com.notesnook.Notesnook
+        - us.zoom.Zoom
+        - io.github.shiftey.Desktop
+        - io.kapsa.drive
+        - org.gnome.meld
+        - re.sonny.Junction
+        - org.audacityteam.Audacity
+        - org.gimp.GIMP
+        - org.inkscape.Inkscape
+        - io.github.pieterdd.RcloneShuttle
+        - com.hunterwittenborn.Celeste
+        - com.dec05eba.gpu_screen_recorder
+        - org.kde.kdenlive
+        - io.github.getnf.embellish
+        - com.brave.Browser
+        - dev.zed.Zed
+        - com.borgbase.Vorta
+        - com.belmoussaoui.Obfuscate
+        - io.github.milkshiift.GoofCord
+        - org.telegram.desktop
+    user: {}
