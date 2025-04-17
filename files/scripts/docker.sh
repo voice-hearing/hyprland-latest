@@ -20,7 +20,7 @@ gpgkey=https://download.docker.com/linux/fedora/gpg
 EOF
 
 if [[ $FEDORA_MAJOR_VERSION -eq 42 ]]; then
-    dnf install -y --enablerepo=docker-ce-testing docker-buildx-plugin docker-ce docker-ce-cli docker-compose-plugin
+    dnf install -y --enablerepo=docker-ce-testing docker-ce docker-buildx-plugin docker-ce-cli docker-compose-plugin
 fi
 
 # prefer to have docker-compose available for legacy muscle-memory
