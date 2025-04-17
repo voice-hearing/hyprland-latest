@@ -2,9 +2,12 @@
 
 set ${SET_X:+-x} -eou pipefail
 
-if [[ ${IMAGE} =~ ucore ]]; then
-    $DNF remove -y docker-cli moby-engine
-fi
+# Set default value if IMAGE is not defined
+IMAGE=${IMAGE:-fedora}
+
+# Example usage of the IMAGE variable
+echo "Building Docker image with name: $IMAGE"
+docker build -t "$IMAGE" 
 
 # Setup repo
 cat <<EOF >/etc/yum.repos.d/docker-ce.repo
