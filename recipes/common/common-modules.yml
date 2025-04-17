@@ -9,7 +9,6 @@ modules:
       scripts:
         - installsignedkernel.sh
         - chezmoi.sh
-        - fonts.sh
         - kopia.sh
         - nordvpn.sh
         - tailscale.sh
