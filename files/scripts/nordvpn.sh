@@ -15,7 +15,6 @@ set -e
 ARCH=$(uname -m)
 BASE_URL=https://repo.nordvpn.com/
 KEY_PATH=/gpg/nordvpn_public.asc
-REPO_PATH_DEB=/deb/nordvpn/debian
 REPO_PATH_RPM=/yum/nordvpn/centos
 RELEASE="stable main"
 ASSUME_YES=false
@@ -46,16 +45,10 @@ done
 
 # Construct the paths to the package repository and its key
 PUB_KEY=${BASE_URL}${KEY_PATH}
-REPO_URL_DEB=${BASE_URL}${REPO_PATH_DEB}
 REPO_URL_RPM=${BASE_URL}${REPO_PATH_RPM}
 
 check_cmd() {
     command -v "$1" 2> /dev/null
-}
-
-get_install_opts_for_apt() {
-    flags=$(get_install_opts_for "apt")
-    RETVAL="$flags"
 }
 
 get_install_opts_for_yum() {
@@ -72,21 +65,6 @@ get_install_opts_for_rpm_ostree() {
     flags=$(get_install_opts_for "dnf")
     RETVAL="$flags"
 }
-
-get_install_opts_for_zypper() {
-    flags=$(get_install_opts_for "zypper")
-    RETVAL="$flags"
-}
-
-get_install_opts_for() {
-    if $ASSUME_YES; then
-        case "$1" in
-            zypper)
-                echo " -n";;
-            *)
-                echo " -y";;
-        esac
-    fi
     echo ""
 }
 
@@ -97,69 +75,8 @@ get_install_opts_for() {
 
 # Install NordVPN for Debian, Ubuntu, Elementary OS, and Linux Mint
 # (with the apt-get package manager)
-install_apt() {
-    if check_cmd apt-get; then
-        get_install_opts_for_apt
-        install_opts="$RETVAL"
-        # Ensure apt is set up to work with https sources
-        $SUDO apt-get $install_opts update
-        $SUDO apt-get $install_opts install apt-transport-https
-
-        # Add the repository key with either wget or curl
-        if check_cmd wget; then
-            wget -qO - "${PUB_KEY}" | $SUDO tee /etc/apt/trusted.gpg.d/nordvpn_public.asc > /dev/null
-        elif check_cmd curl; then
-            curl -s "${PUB_KEY}" | $SUDO tee /etc/apt/trusted.gpg.d/nordvpn_public.asc > /dev/null
-        else
-            echo "Couldn't find wget or curl - one of them is needed to proceed with the installation"
-            exit 1
-        fi
-
-        echo "deb ${REPO_URL_DEB} ${RELEASE}" | $SUDO tee /etc/apt/sources.list.d/nordvpn.list
-        $SUDO apt-get $install_opts update
-        $SUDO apt-get $install_opts install nordvpn
-        exit
-    fi
-}
-
 # Install NordVPN for RHEL and CentOS
 # (with the yum package manager)
-install_yum() {
-    if check_cmd yum && check_cmd yum-config-manager; then
-        get_install_opts_for_yum
-        install_opts="$RETVAL"
-
-        repo="${REPO_URL_RPM}"
-        if [ ! -f "${REPO_URL_RPM}" ]; then
-            repo="${repo}/${ARCH}"
-        fi
-
-        $SUDO rpm -v --import "${PUB_KEY}"
-        $SUDO yum-config-manager --add-repo "${repo}"
-        $SUDO yum $install_opts install nordvpn
-        exit
-    fi
-}
-
-# Install NordVPN for Fedora and QubesOS
-# (with the dnf package manager)
-install_dnf() {
-    if check_cmd dnf; then
-        get_install_opts_for_dnf
-        install_opts="$RETVAL"
-        
-        repo="${REPO_URL_RPM}"
-        if [ ! -f "${REPO_URL_RPM}" ]; then
-            repo="${repo}/${ARCH}"
-        fi
-
-        $SUDO rpm -v --import "${PUB_KEY}"
-        $SUDO dnf config-manager --add-repo "${repo}"
-        $SUDO dnf $install_opts install nordvpn
-        exit
-    fi
-}
-
 # Install NordVPN for rpm-ostree systems
 # (with the rpm-ostree package manager)
 install_rpm_ostree() {
@@ -215,33 +132,9 @@ install_rpm_ostree() {
     fi
 }
 
-# Install NordVPN for openSUSE
-# (with the zypper package manager)
-install_zypper() {
-    if check_cmd zypper; then
-        if ! check_cmd curl; then
-            echo "Curl is needed to proceed with the installation"
-            exit 1
-        fi
-        get_install_opts_for_zypper
-        install_opts="$RETVAL"
-        
-        $SUDO rpm -v --import "${PUB_KEY}"
-        if [ -f "${REPO_URL_RPM}" ]; then
-            $SUDO zypper addrepo -f "${REPO_URL_RPM}"
-        else 
-            $SUDO zypper addrepo -g -f "${REPO_URL_RPM}/${ARCH}" nordvpn
-        fi
-        $SUDO zypper $install_opts install nordvpn
-        exit
-    fi
-}
-
-install_apt
 install_yum
 install_dnf
 install_rpm_ostree
-install_zypper
 
 # None of the known package managers (apt, yum, dnf, zypper) are available
 echo "Error: Couldn't identify the package manager"
