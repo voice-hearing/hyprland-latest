@@ -10,7 +10,6 @@ modules:
         - installsignedkernel.sh
         - chezmoi.sh
         - kopia.sh
-        - tailscale.sh
         - vscode.sh
         
     - type: containerfile
