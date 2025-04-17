@@ -10,7 +10,6 @@ modules:
         - installsignedkernel.sh
         - chezmoi.sh
         - kopia.sh
-        - nordvpn.sh
         - tailscale.sh
         - vscode.sh
         
@@ -72,7 +71,7 @@ modules:
         - rust
         - cargo
         - rclone
-        
+        - dnf-plugins-core
       # sound
         - wireplumber
         - pipewire
@@ -189,6 +188,7 @@ modules:
 
     - type: script
       scripts:
+        - nordvpn.sh
         - settheming.sh
         - addbrewjustimport.sh
 
