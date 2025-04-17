@@ -145,8 +145,16 @@ modules:
         - libavutil-free  
         - libpostproc-free  
         - libswresample-free  
-        - libswscale-free  
-
+        - libswscale-free 
+        - firefox
+        - firefox-langpacks
+        
+    - type: rpm-ostree
+      repos:
+         - https://copr.fedorainfracloud.org/coprs/atim/starship/repo/fedora-%OS_VERSION%/atim-starship-fedora-%OS_VERSION%.repo
+      install:
+         - starship
+    
     - type: script
       scripts:
         - installrpmfusion.sh
