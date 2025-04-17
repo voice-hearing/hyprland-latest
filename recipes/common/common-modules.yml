@@ -72,6 +72,9 @@ modules:
         - alsa-firmware
         - p7zip
         - distrobox
+        - rust
+        - cargo
+        - rclone
         
       # sound
         - wireplumber
@@ -104,6 +107,14 @@ modules:
         - gvfs-fuse
         - gvfs-archive
         - android-tools
+        - gparted
+        - gnome-epub-thumbnailer
+        - zathura 
+        - zathura-cb 
+        - zathura-djvu 
+        - zathura-pdf-mupdf 
+        - zathura-pdf-poppler 
+        - zathura-ps
 
       # screenshot
         - slurp
@@ -114,6 +125,7 @@ modules:
         - wlsunset
         - brightnessctl
         - kanshi
+        - ImageMagick
 
       # notifications
         - dunst
@@ -125,6 +137,7 @@ modules:
         - paper-icon-theme
         - breeze-icon-theme 
         - papirus-icon-theme
+        - lxappearance
 
     - type: script
       scripts:
@@ -154,8 +167,6 @@ modules:
         - libpostproc-free  
         - libswresample-free  
         - libswscale-free 
-        - firefox
-        - firefox-langpacks
         
     - type: rpm-ostree
       repos:
