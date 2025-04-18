@@ -3,8 +3,8 @@
 set -ouex pipefail
 
 # github direct installs
-/ctx/build_files/github-release-install.sh twpayne/chezmoi x86_64
-
+  rpm-ostree install \
+      https://github.com/twpayne/chezmoi/releases/download/v2.61.0/chezmoi-2.61.0-x86_64.rpm
 # Starship Shell Prompt
 curl -Lo /tmp/starship.tar.gz "https://github.com/starship/starship/releases/latest/download/starship-x86_64-unknown-linux-gnu.tar.gz"
 tar -xzf /tmp/starship.tar.gz -C /tmp
