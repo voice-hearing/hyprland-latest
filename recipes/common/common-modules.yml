@@ -73,7 +73,7 @@ modules:
         - poppler-devel
         - poppler-utils
         - python3
-        - pthon3-pip
+        - python3-pip
         - make
         - nodejs
         - rclone
