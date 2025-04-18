@@ -10,6 +10,7 @@ modules:
         - installsignedkernel.sh
         - chezmoi.sh
         - kopia.sh
+        - nordvpn.sh
         
     - type: containerfile
       snippets:
