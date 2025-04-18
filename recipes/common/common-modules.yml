@@ -69,8 +69,17 @@ modules:
         - distrobox
         - rust
         - cargo
+        - ripgrep
+        - poppler-devel
+        - poppler-utils
+        - python3
+        - pthon3-pip
+        - make
+        - nodejs
         - rclone
         - dnf-plugins-core
+        - fortune-mod
+        - fastfetch
       # sound
         - wireplumber
         - pipewire
