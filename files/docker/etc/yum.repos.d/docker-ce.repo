@@ -1,0 +1,6 @@
+[docker-ce-testing]
+name=Docker CE testing - $basearch
+baseurl=https://download.docker.com/linux/fedora/$releasever/$basearch/testing
+enabled=1
+gpgcheck=1
+gpgkey=https://download.docker.com/linux/fedora/gpg
