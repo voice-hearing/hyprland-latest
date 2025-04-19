@@ -1,0 +1,14 @@
+name: sway-gdm
+
+description: ublue images for wayland compositors
+
+base-image: quay.io/fedora-ostree-desktops/sway-atomic
+
+image-version: 42
+
+modules:
+  - from-file: common/remove-sddm.yml
+  - from-file: common/common-modules.yml
+  - from-file: common/gdm-modules.yml
+  - from-file: common/sway-modules.yml
+  - from-file: common/final-modules.yml

@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+set -oue pipefail
+
+wayblue_origin_conf="/usr/etc/river/init"
+river_conf="${XDG_CONFIG_HOME:-$HOME/.config}/river/init"
+
+# Replace the homedir conf if it's missing or of wayblue origin
+if [ ! -e "$river_conf" ] || grep -q "ORIGIN: WAYBLUE" "$river_conf"; then
+    cp "$wayblue_origin_conf" "$river_conf" || echo "Config location $river_conf is not writable. Skipping wayblue config..."
+fi
+
+exec river

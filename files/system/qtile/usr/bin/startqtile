@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+set -oue pipefail
+
+wayblue_origin_conf="/usr/etc/qtile/config.py"
+qtile_conf="${XDG_CONFIG_HOME:-$HOME/.config}/qtile/config.py"
+
+# Replace the homedir conf if it's missing or of wayblue origin
+if [ ! -e "$qtile_conf" ] || grep -q "ORIGIN: WAYBLUE" "$qtile_conf"; then
+    cp "$wayblue_origin_conf" "$qtile_conf" || echo "Config location $qtile_conf is not writable. Skipping wayblue config..."
+fi
+
+exec qtile start -b wayland

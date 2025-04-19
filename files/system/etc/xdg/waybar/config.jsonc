@@ -16,7 +16,6 @@
     ],
     "modules-right": [
         "idle_inhibitor",
-        "swarofi-updates",
         "pulseaudio",
         "network",
         "power-profiles-daemon",
@@ -29,27 +28,6 @@
         "tray"
     ],
     // Modules configuration
-    "sway/workspaces": {
-        "disable-scroll": true,
-        "all-outputs": true,
-        "warp-on-scroll": false,
-        "format": "{name}: {icon}",
-        "format-icons": {
-            "1": "",
-            "2": "",
-            "3": "",
-            "4": "",
-            "5": "",
-            "6": "",
-            "7": "",
-            "8": "",
-            "9": "",
-            "urgent": "",
-            "focused": "",
-            "default": ""
-        }
-    },
-    
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
     },
@@ -68,7 +46,7 @@
         }
     },
     "tray": {
-        "icon-size": 21,
+        // "icon-size": 21,
         "spacing": 5
     },
     "clock": {
@@ -76,46 +54,6 @@
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%Y-%m-%d}"
     },
-    	// waybar-spotify
-    "custom/spotify": {
-        "exec": "$HOME/.config/sway/waybar/spotify",
-        "interval": 1,
-        "format": "{}",
-        "tooltip": true,
-        "max-length": 45,
-        "on-click": "playerctl play-pause",
-        "on-click-middle": "playerctl previous",
-        "on-click-right": "playerctl next",
-        "on-scroll-up": "playerctl position 05+",
-        "on-scroll-down": "playerctl position 05-",
-        "smooth-scrolling-threshold": 1,
-    },
-    // waybar-mpd
-    "mpd": {
-        "interval": 2,
-        "unknown-tag": "N/A",
-
-        "format": "{artist} - {title} {stateIcon}",
-        "format-disconnected": " Disconnected",
-        "format-paused": "{artist} - {title} {stateIcon}",
-        "format-stopped": "Stopped ",
-        "state-icons": {
-            "paused": "",
-            "playing": ""
-        },
-        "tooltip-format": "MPD (connected)",
-        "tooltip-format-disconnected": "MPD (disconnected)",
-        // Commands to execute on events
-        "on-click": "mpc toggle",
-        //"on-click-middle": "foot -c ~/.config/sway/foot/foot.ini -e ncmpcpp",
-        "on-click-middle": "alacritty --class 'alacritty-float,alacritty-float' --config-file ~/.config/sway/alacritty/alacritty.yml -e ncmpcpp",
-        "on-click-right": "mpc next",
-        "on-update": "",
-        "on-scroll-up": "volume --inc",
-        "on-scroll-down": "volume --dec",
-        "smooth-scrolling-threshold": 1,
-    },
-    
     "cpu": {
         "format": "{usage}% ",
         "tooltip": false
@@ -165,21 +103,14 @@
         "power-saver": ""
       }
     },
-    "swarofi-updates": {
-        "format": "Updates: {}",
-        "interval": 3600,
-        "exec": "/home/fedora/.config/swarofi-updater/swarofi-applet.sh",
-        "on-click": "/home/fedora/.config/swarofi-updater/swarofi-updater.sh",
-        "signal": 8
-    },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "({signalStrength}%) ",
+        "format-wifi": "{essid} ({signalStrength}%) ",
         "format-ethernet": "{ipaddr}/{cidr} ",
         "tooltip-format": "{ifname} via {gwaddr} ",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {essid} {ipaddr}/{cidr}"
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float

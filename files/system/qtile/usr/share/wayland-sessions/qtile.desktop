@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Qtile
+Comment=A dynamic tiling wayland compositor
+DesktopNames=qtile
+Exec=/usr/bin/startqtile
+Type=Application

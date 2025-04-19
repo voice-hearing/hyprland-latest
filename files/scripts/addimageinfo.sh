@@ -13,12 +13,12 @@ set -oue pipefail
 # BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language
 # governing permissions and limitations under the License.
 
-IMAGE_PRETTY_NAME="hyprland-latest"
+IMAGE_PRETTY_NAME="hyprland"
 IMAGE_LIKE="fedora"
-HOME_URL="https://github.com/voice-hearing/hyprland-latest"
-DOCUMENTATION_URL="https://github.com/voice-hearing/hyprland-latest"
-SUPPORT_URL="https://github.com/voice-hearing/hyprland-latest/issues"
-BUG_SUPPORT_URL="https://github.com/voice-hearing/hyprland-latest/issues"
+HOME_URL="https://github.com/voice-hearing/hyprland"
+DOCUMENTATION_URL="https://github.com/voice-hearing/hyprland"
+SUPPORT_URL="https://github.com/voice-hearing/hyprland/issues"
+BUG_SUPPORT_URL="https://github.com/voice-hearing/hyprland/issues"
 
 if grep -q "VARIANT_ID" /usr/lib/os-release; then
     sed -i "s/^VARIANT_ID=.*/VARIANT_ID=$IMAGE_NAME/" /usr/lib/os-release
