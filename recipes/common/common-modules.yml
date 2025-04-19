@@ -30,7 +30,6 @@ modules:
       - fixupstreamicdloaderbug.sh
       - addimageinfo.sh
       - nordvpn.sh
-      - tailscale.sh
 
   - type: rpm-ostree
     install:
