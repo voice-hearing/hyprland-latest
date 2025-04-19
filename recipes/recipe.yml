@@ -12,5 +12,5 @@ modules:
   - from-file: common/fonts.yml
   - from-file: common/flatpak.yml
   - from-file: common/hyprland-modules.yml
-  - from-file: common/docker.yml
+  - from-file: common/docker-modules.yml
   - from-file: common/final-modules.yml
