@@ -29,7 +29,6 @@ modules:
       - ensureautoupdates.sh
       - fixupstreamicdloaderbug.sh
       - addimageinfo.sh
-      - nordvpn.sh
 
   - type: rpm-ostree
     install:
